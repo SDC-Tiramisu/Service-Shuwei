@@ -13,18 +13,30 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <div>
         <div className="recHeader">More {this.state.genre} Near {this.state.title}</div>
-        {this.state.recs.map(rec => {
-          <Rec rec={rec}/>
-        })}
+        {this.state.recs.map(rec => <Recommendation rec={rec}/>)}
       </div>
     );
   }
 };
 
-
+const Recommendation = (props) => {
+  return (
+    <div className="rec">
+      <div>{props.pic}</div>
+      <div>{props.title}</div>
+      <div>{props.genre} {props.price}</div>
+      <div>ZAGAT RATED</div>
+      <div>{props.body}</div>
+    </div>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById("recommendations"));
