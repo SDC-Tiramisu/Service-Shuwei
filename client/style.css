@@ -1,0 +1,75 @@
+body {
+  background-color: rgb(240, 240, 240);
+}
+
+.allRecs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.recHeader {
+  border-top: 1px solid black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  line-height: 20px;
+  font-family: Calibre-Regular;
+}
+
+.rec {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  height: 220px;
+  width: 580px;
+}
+
+.pic {
+  display: flex;
+  height: 220px;
+  width: 230px;
+  background-color: black;
+}
+
+.recBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 25px;
+  background-color: white;
+  height: 100%;
+  width: 350px;
+}
+
+.recTitle {
+  padding: 3px;
+  font-size: 18px;
+  line-height: 20px;
+  font-family: Calibre-Medium;
+  text-transform: uppercase;
+}
+
+.recPrice {
+  padding: 3px;
+  color: rgb(153, 153, 153);
+  font-size: 15px;
+}
+
+.logo {
+  height: 20px;
+  width: 20px;
+  padding-right: 5px;
+}
+
+.zagatRated {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  font-size: 15px;
+}
+
+.recText {
+  font-size: 15px;
+  padding: 3px;
+}

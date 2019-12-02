@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       genre: 'Asian',
       title: 'Sushi Near Me',
-      recs: []
+      recs: [1,2,3,4]
     };
   }
 
@@ -21,7 +21,9 @@ class App extends React.Component {
     return (
       <div>
         <div className="recHeader">More {this.state.genre} Near {this.state.title}</div>
-        {this.state.recs.map(rec => <Recommendation rec={rec}/>)}
+        <div  className="allRecs">
+          {this.state.recs.map(rec => <Recommendation rec={rec}/>)}
+        </div>
       </div>
     );
   }
@@ -30,11 +32,15 @@ class App extends React.Component {
 const Recommendation = (props) => {
   return (
     <div className="rec">
-      <div>{props.pic}</div>
-      <div>{props.title}</div>
-      <div>{props.genre} {props.price}</div>
-      <div>ZAGAT RATED</div>
-      <div>{props.body}</div>
+      <div className="pic">{props.pic}pic</div>
+      <div className="recBody">
+        <div className="recTitle">{props.title}title</div>
+        <div className="recPrice">{props.genre} {props.price}asian $$$</div>
+        <div className="zagatRated">
+          <img src="/assets/logo.svg" className="logo"/>ZAGAT RATED
+        </div>
+        <div className="recText">{props.text}This asian food is bomb.</div>
+        </div>
     </div>
   );
 };
