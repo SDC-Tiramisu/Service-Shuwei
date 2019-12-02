@@ -7,17 +7,24 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-
+      genre: 'Asian',
+      title: 'Sushi Near Me',
+      recs: []
     };
   }
 
   render() {
     return (
       <div>
-        App is rendering
+        <div className="recHeader">More {this.state.genre} Near {this.state.title}</div>
+        {this.state.recs.map(rec => {
+          <Rec rec={rec}/>
+        })}
       </div>
     );
   }
 };
+
+
 
 ReactDOM.render(<App />, document.getElementById("recommendations"));
