@@ -35,7 +35,7 @@ const Recommendation = (props) => {
       <div className="pic">{props.pic}pic</div>
       <div className="recBody">
         <div className="recTitle">{props.title}title</div>
-        <div className="recPrice">{props.genre} {props.price}asian $$$</div>
+        <div className="recPrice">{props.genre}asian <span>&#183;</span>  {props.price}$$$</div>
         <div className="zagatRated">
           <img src="/assets/logo.svg" className="logo"/>ZAGAT RATED
         </div>

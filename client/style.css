@@ -14,7 +14,7 @@ body {
   padding-bottom: 15px;
   font-size: 20px;
   line-height: 20px;
-  font-family: Calibre-Regular;
+  font-family: "Calibre-Regular", sans-serif;
 }
 
 .rec {
@@ -23,6 +23,10 @@ body {
   padding: 20px;
   height: 220px;
   width: 580px;
+}
+
+.rec:hover .recTitle {
+  border-bottom: 1px solid #b70038;
 }
 
 .pic {
@@ -44,16 +48,23 @@ body {
 
 .recTitle {
   padding: 3px;
+  width: 30%;
   font-size: 18px;
   line-height: 20px;
-  font-family: Calibre-Medium;
+  border-bottom: 1px solid transparent;
+  font-family: "Calibre-Regular", sans-serif;
   text-transform: uppercase;
+  transition-property: border-bottom;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
 }
 
 .recPrice {
   padding: 3px;
   color: rgb(153, 153, 153);
   font-size: 15px;
+  font-family: "Calibre-Regular", sans-serif;
 }
 
 .logo {
@@ -67,9 +78,11 @@ body {
   align-items: center;
   padding: 3px;
   font-size: 15px;
+  font-family: "Calibre-Regular", sans-serif;
 }
 
 .recText {
   font-size: 15px;
   padding: 3px;
+  font-family: "Calibre-Regular", sans-serif;
 }
