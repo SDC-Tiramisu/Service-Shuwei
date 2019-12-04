@@ -22,7 +22,7 @@ class App extends React.Component {
       <div>
         <div className="recHeader">More {this.state.genre} Near {this.state.title}</div>
         <div  className="allRecs">
-          {this.state.recs.map(rec => <Recommendation rec={rec}/>)}
+          {this.state.recs.map(rec => <Recommendation rec={rec} genre={this.state.genre}/>)}
         </div>
       </div>
     );
@@ -32,7 +32,7 @@ class App extends React.Component {
 const Recommendation = (props) => {
   return (
     <div className="rec">
-      <div className="pic">{props.pic}pic</div>
+      <div className="pic">{props.pics}pic</div>
       <div className="recBody">
         <div className="recTitle">{props.title}title</div>
         <div className="recPrice">{props.genre}asian <span>&#183;</span>  {props.price}$$$</div>
