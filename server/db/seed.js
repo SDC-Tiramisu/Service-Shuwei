@@ -10,7 +10,7 @@ const seed = () => {
   for (var i = 1; i <= 100; i++) {
 
     var genre = genres[Math.floor(Math.random() * Math.floor(genres.length))];
-    var title1 = faker.random.companyName();
+    var title1 = faker.company.companyName();
     var recommendationPage = {
       id: i,
       genre: genre,
@@ -20,9 +20,9 @@ const seed = () => {
 
     var k = Math.floor(Math.random() * 10) + 1;
     for (var j = 0; j < k; j++) {
-      var title2 = faker.random.companyName();
+      var title2 = faker.company.companyName();
       var price = prices[Math.floor(Math.random() * Math.floor(prices.length))];
-      var text = faker.random.sentence();
+      var text = faker.lorem.sentence();
       recommendationPage.recs.push({
         pics: [],
         title: title2,

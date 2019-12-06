@@ -1,6 +1,92 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import styled from 'styled-components';
+
+const Allrecs = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+const Recheader = styled.div`
+  border-top: 1px solid black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  line-height: 20px;
+  font-family: "Calibre-Regular", sans-serif;
+`;
+
+const Rec = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  height: 220px;
+  width: 580px;
+  box-shadow: 0px 0px 10px grey;
+`;
+
+const Pic = styled.div`
+  display: flex;
+  height: 220px;
+  width: 230px;
+  background-color: black;
+`;
+
+const Recbody = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 25px;
+  background-color: white;
+  height: 100%;
+  width: 350px;
+`;
+
+const Rectitle = styled.div`
+  padding: 3px;
+  width: 310px;
+  font-size: 18px;
+  line-height: 20px;
+  border-bottom: 1px solid transparent;
+  font-family: "Calibre-Regular", sans-serif;
+  text-transform: uppercase;
+  transition-property: border-bottom;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+  ${Rec}:hover & {
+    border-bottom: 1px solid #b70038;
+  }
+`;
+
+const Recprice = styled.div`
+  padding: 3px;
+  color: rgb(153, 153, 153);
+  font-size: 15px;
+  font-family: "Calibre-Regular", sans-serif;
+`;
+
+const Logo = styled.div`
+  height: 20px;
+  width: 20px;
+  padding-right: 5px;
+`;
+
+const Zagatrated = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  font-size: 15px;
+  font-family: "Calibre-Regular", sans-serif;
+`;
+
+const Rectext = styled.div`
+  font-size: 15px;
+  padding: 3px;
+  font-family: "Calibre-Regular", sans-serif;
+`;
 
 class App extends React.Component {
 
@@ -42,10 +128,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="recHeader">More {this.state.genre} Near {this.state.title}</div>
-        <div  className="allRecs">
+        <Recheader>More {this.state.genre} Near {this.state.title}</Recheader>
+        <Allrecs>
           {this.state.recs.map(rec => <Recommendation rec={rec} genre={this.state.genre}/>)}
-        </div>
+        </Allrecs>
       </div>
     );
   }
@@ -53,17 +139,17 @@ class App extends React.Component {
 
 const Recommendation = (props) => {
   return (
-    <div className="rec">
-      <div className="pic">{props.rec.pics}</div>
-      <div className="recBody">
-        <div className="recTitle">{props.rec.title}</div>
-        <div className="recPrice">{props.genre} <span>&#183;</span>  {props.rec.price}</div>
-        <div className="zagatRated">
-          <img src="/assets/logo.svg" className="logo"/>ZAGAT RATED
-        </div>
-        <div className="recText">{props.rec.text}</div>
-        </div>
-    </div>
+    <Rec>
+      <Pic>{props.rec.pics}</Pic>
+      <Recbody>
+        <Rectitle>{props.rec.title}</Rectitle>
+        <Recprice>{props.genre} <span>&#183;</span>  {props.rec.price}</Recprice>
+        <Zagatrated>
+          <Logo><img src="assets/logo.svg"/></Logo>ZAGAT RATED
+        </Zagatrated>
+        <Rectext>{props.rec.text}</Rectext>
+      </Recbody>
+    </Rec>
   );
 };
 
