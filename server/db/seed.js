@@ -1,17 +1,16 @@
-const db = require('./index.js');
-const Recs = require('./recs.js');
 const faker = require('faker');
+const Recs = require('./recs.js');
 
 const seed = () => {
 
   var data = [];
-  var genres = ['american', 'asian', 'mexican', 'indian'];
-  var prices = ['$', '$$', '$$$'];
+  var genres = ['American', 'Asian', 'Mexican', 'Indian'];
+  var prices = ['$', '$$', '$$$', '$$$$'];
 
-  for (var i = 1; i < 100; i++) {
+  for (var i = 1; i <= 100; i++) {
 
     var genre = genres[Math.floor(Math.random() * Math.floor(genres.length))];
-    var title1 = faker.random.words();
+    var title1 = faker.company.companyName();
     var recommendationPage = {
       id: i,
       genre: genre,
@@ -21,9 +20,9 @@ const seed = () => {
 
     var k = Math.floor(Math.random() * 10) + 1;
     for (var j = 0; j < k; j++) {
-      var title2 = faker.random.words();
+      var title2 = faker.company.companyName();
       var price = prices[Math.floor(Math.random() * Math.floor(prices.length))];
-      var text = faker.random.words();
+      var text = faker.lorem.sentence();
       recommendationPage.recs.push({
         pics: [],
         title: title2,
@@ -36,7 +35,8 @@ const seed = () => {
   }
 
   Recs.insertMany(data)
-    .then(() => db.disconnect());
+    .then(() => console.log('seeding script complete'))
+    .catch(err => console.log(err));
 };
 
 seed();

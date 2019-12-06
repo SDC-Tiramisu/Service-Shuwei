@@ -5,15 +5,16 @@ const https = require('https');
 const db = require('./db/index.js');
 
 const app = express();
-const port = 3005;
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/../client'));
-
-app.listen(port, () => console.log(`listening on port ${port}`));
+app.use(express.static('client'));
 
 app.get('/api/restaurants/:restaurantId', (req, res) => {
-  const id = parseInt(req.params.restaurantId);
+  var id = req.params.restaurantId;
   db.get(id)
-    .then(data => res.send(data));
+    .then(data => res.send(data))
+    .catch(err => console.log(err));
 });
+
+const port = 3005;
+app.listen(port, () => console.log(`listening on port ${port}`));
