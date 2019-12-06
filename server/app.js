@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static('client'));
 
-app.patch('/api/restaurants/:restaurantId', (req, res) => {
+app.get('/api/restaurants/:restaurantId', (req, res) => {
   var id = req.params.restaurantId;
   db.get(id)
     .then(data => res.send(data))

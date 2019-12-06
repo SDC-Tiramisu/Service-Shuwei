@@ -99,17 +99,17 @@ class App extends React.Component {
       recs: []
     };
 
-    this.patch = this.patch.bind(this);
+    this.get = this.get.bind(this);
   }
 
   componentDidMount() {
-    this.patch();
+    this.get();
   }
 
-  patch() {
+  get() {
     const restaurantId = window.location.href.slice(36);
     $.ajax({
-      type: 'PATCH',
+      type: 'GET',
       url: 'api/restaurants/'+restaurantId,
       success: (data) => {
         console.log('data ', data);
