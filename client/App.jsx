@@ -230,8 +230,9 @@ const ImageSlide = ({ url }) => {
   const styles = {
     backgroundImage: `url(${url})`,
     height: '220px',
-    width: '230px',
-    overflow: 'auto',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
     zIndex: '-1'
   };
 
