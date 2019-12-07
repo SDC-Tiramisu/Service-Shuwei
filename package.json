@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/app.js",
-    "dev:react": "webpack -d --watch",
+    "dev": "webpack -d --watch",
     "seed": "node server/db/seed.js"
   },
   "repository": {
@@ -35,7 +35,8 @@
     "nodemon": "^2.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "styled-icons": "^9.0.1"
   },
   "devDependencies": {
     "webpack": "^4.41.2",

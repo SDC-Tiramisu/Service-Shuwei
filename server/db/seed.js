@@ -23,12 +23,21 @@ const seed = () => {
       var title2 = faker.company.companyName();
       var price = prices[Math.floor(Math.random() * Math.floor(prices.length))];
       var text = faker.lorem.sentence();
-      recommendationPage.recs.push({
+      var rec = {
         pics: [],
         title: title2,
         price: price,
         text: text
-      });
+      };
+
+      var m = Math.floor(Math.random() * (10 - 5 + 1) + 5);
+      for (var l = 0; l < m; l++) {
+        var photoNum = Math.floor(Math.random() * 74) + 1;
+        var picUrl = `https://zagat-restaurant-images.s3-us-west-1.amazonaws.com/photo${photoNum}.jpg`;
+        rec.pics.push(picUrl);
+      }
+
+      recommendationPage.recs.push(rec);
     }
 
     data.push(recommendationPage);

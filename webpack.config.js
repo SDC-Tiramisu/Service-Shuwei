@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './client/App.jsx',
+  entry: './client/Index.jsx',
   module: {
     rules: [
       {
