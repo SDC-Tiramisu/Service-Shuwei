@@ -9,7 +9,7 @@ const Rec = styled.div`
   margin: 20px;
   height: 220px;
   width: 580px;
-  box-shadow: 0px 0px 10px grey;
+  background-color: rgb(255,255,255);
 `;
 
 const Picholder = styled.div`
@@ -26,6 +26,7 @@ const Picnavleft = styled(KeyboardArrowLeft)`
   margin-right: -40px;
   border-radius: 20px;
   color: white;
+  z-index: 10;
   &:hover {
     background-color: #101820;
   }
@@ -35,7 +36,6 @@ const Pic = styled.div`
   height: 220px;
   width: 230px;
   overflow: auto;
-  z-index: -1;
 `;
 
 const Picnavright = styled(KeyboardArrowRight)`
@@ -44,6 +44,7 @@ const Picnavright = styled(KeyboardArrowRight)`
   margin-left: -40px;
   border-radius: 20px;
   color: white;
+  z-index: 10;
   &:hover {
     background-color: #101820;
   }
@@ -65,7 +66,7 @@ const Rectitle = styled.div`
   font-size: 18px;
   line-height: 20px;
   border-bottom: 1px solid transparent;
-  font-family: "Calibre-Regular", sans-serif;
+  font-family: 'Calibre-Medium';
   text-transform: uppercase;
   transition-property: border-bottom;
   transition-duration: 0.2s;
@@ -78,9 +79,9 @@ const Rectitle = styled.div`
 
 const Recprice = styled.div`
   padding: 3px;
-  color: rgb(153, 153, 153);
+  color: rgb(96,97,97);
   font-size: 15px;
-  font-family: "Calibre-Regular", sans-serif;
+  font-family: 'Calibre-Medium';
 `;
 
 const Logo = styled.div`
@@ -94,13 +95,13 @@ const Zagatrated = styled.div`
   align-items: center;
   padding: 3px;
   font-size: 15px;
-  font-family: "Calibre-Regular", sans-serif;
+  font-family: 'Calibre-Medium';
 `;
 
 const Rectext = styled.div`
   font-size: 15px;
   padding: 3px;
-  font-family: "Calibre-Regular", sans-serif;
+  font-family: 'Calibre-Medium';
 `;
 
 class Recommendation extends React.Component {
@@ -167,8 +168,7 @@ const ImageSlide = ({ url }) => {
     height: '220px',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    zIndex: '-1'
+    backgroundSize: 'cover'
   };
 
   return (
