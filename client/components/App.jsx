@@ -15,7 +15,7 @@ const Recheader = styled.div`
   padding-bottom: 15px;
   font-size: 20px;
   line-height: 20px;
-  font-family: "Calibre-Regular", sans-serif;
+  font-family: 'Calibre-Medium';
 `;
 
 class App extends React.Component {
