@@ -1,15 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 const https = require('https');
 const db = require('./db/index.js');
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static('client'));
 
-app.get('/api/restaurants/:restaurantId', (req, res) => {
+app.get('/api/restaurants/:restaurantId', cors(), (req, res) => {
   var id = req.params.restaurantId;
   db.get(id)
     .then(data => res.send(data))
