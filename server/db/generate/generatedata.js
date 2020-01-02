@@ -4,7 +4,7 @@ const csvWriter = require('csv-write-stream')
 var writer = csvWriter();
 
 function writeOneMillionTimes(fileName, startNum){
- var maxSize = 10;
+ var maxSize = 1000000;
  const Writer = fs.createWriteStream(fileName);
 
  Writer.write('id, genre, title, price, description, recommendRestaurant, images\n');
@@ -67,6 +67,12 @@ write();
 
 console.log("lets start!!!")
 writeOneMillionTimes('./server/db/generate/csv/file1.csv', 0);
-
-writeOneMillionTimes('./server/db/generate/csv/file2.csv', 100);
-writeOneMillionTimes('./server/db/generate/csv/file3.csv', 200);
+writeOneMillionTimes('./server/db/generate/csv/file2.csv', 1000000);
+writeOneMillionTimes('./server/db/generate/csv/file3.csv', 2000000);
+writeOneMillionTimes('./server/db/generate/csv/file3.csv', 3000000);
+writeOneMillionTimes('./server/db/generate/csv/file5.csv', 4000000);
+writeOneMillionTimes('./server/db/generate/csv/file6.csv', 5000000);
+writeOneMillionTimes('./server/db/generate/csv/file7.csv', 6000000);
+writeOneMillionTimes('./server/db/generate/csv/file8.csv', 7000000);
+writeOneMillionTimes('./server/db/generate/csv/file9.csv', 8000000);
+writeOneMillionTimes('./server/db/generate/csv/file10.csv', 9000000);
