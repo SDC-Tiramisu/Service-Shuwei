@@ -6,14 +6,27 @@ const db = mongoose.connection;
 mongoose.connect('mongodb://localhost/zagat', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const get = (id) => {
-  return new Promise((resolve, reject) => {
-    Recs
-      .find({ id })
-      .exec((err, doc) => {
-        if (err) reject(err);
-        resolve(doc);
-      });
-  });
+   const result = Recs.find({ id })
+   return result.exec();
 };
 
-module.exports = { db, get };
+const create = (data) => {
+ let rec = new Recs(data);
+ return rec.save();
+}
+
+const update = (id, data) => {
+ const result = Recs.findOneAndUpdate(
+   {id},
+   data,
+   {new:true}
+ )
+ return result.exec();
+}
+
+const deletedata = (id) => {
+ const result = Recs.findOneAndRemove({ id });
+ return result.exec();
+}
+
+module.exports = { db, get, create, update, deletedata};

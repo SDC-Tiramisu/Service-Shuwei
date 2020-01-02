@@ -9,6 +9,5 @@ const recsSchema = new mongoose.Schema({
   recs: []
 });
 
-const Recs = mongoose.model('Recommendations', recsSchema);
-
+const Recs = mongoose.model('Recs', recsSchema);
 module.exports = Recs;
