@@ -108,7 +108,7 @@ class Recommendation extends React.Component {
 
   constructor(props) {
     super(props);
-
+    // console.log("recom props:",this.props)
     this.state = {
       imageIndex: 0
     };
@@ -118,7 +118,9 @@ class Recommendation extends React.Component {
   }
 
   onLeftClick() {
-    const lastIndex = this.props.rec.pics.length - 1;
+    const lastIndex = this.props.rec.images.length - 1;
+    // console.log("this is lastIndex: ",lastIndex);
+    // console.log("this is recL : ",this.props.rec)
     const { imageIndex } = this.state;
     const shouldResetIndex = imageIndex === 0;
     const index =  shouldResetIndex ? lastIndex : imageIndex - 1;
@@ -129,7 +131,7 @@ class Recommendation extends React.Component {
   }
 
   onRightClick() {
-    const lastIndex = this.props.rec.pics.length - 1;
+    const lastIndex = this.props.rec.images.length - 1;
     const { imageIndex } = this.state;
     const shouldResetIndex = imageIndex === lastIndex;
     const index =  shouldResetIndex ? 0 : imageIndex + 1;
@@ -145,7 +147,7 @@ class Recommendation extends React.Component {
         <Picholder>
           <Picnavleft onClick={this.onLeftClick}></Picnavleft>
           <Pic>
-            <ImageSlide url={ this.props.rec.pics[this.state.imageIndex] }/>
+          <ImageSlide url={ this.props.rec.images[this.state.imageIndex] }/>
           </Pic>
           <Picnavright onClick={this.onRightClick}></Picnavright>
         </Picholder>
@@ -155,7 +157,7 @@ class Recommendation extends React.Component {
           <Zagatrated>
             <Logo><img src="assets/logo.svg"/></Logo>ZAGAT RATED
           </Zagatrated>
-          <Rectext>{this.props.rec.text}</Rectext>
+          <Rectext>{this.props.rec.description}</Rectext>
         </Recbody>
       </Rec>
     );

@@ -2,7 +2,8 @@ import React from 'react';
 import $ from 'jquery';
 import styled from 'styled-components';
 import Recommendation from './Recommendation.jsx';
-
+// let params = (new URL(document.location)).searchParams;
+// let restaurantId = parseInt(params.get('restaurantId'))
 const Allrecs = styled.div`
   display: flex;
   flex-direction: row;
@@ -41,11 +42,15 @@ class App extends React.Component {
     $.ajax({
       type: 'GET',
       url: 'api/restaurants/'+restaurantId,
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
       success: (data) => {
+        console.log("this is data!!!", data)
         this.setState({
-          genre: data[0].genre,
-          title: data[0].title,
-          recs: data[0].recs
+          genre:  data.genre,
+          title:  data.title,
+          recs:  data.recs
+
         });
       },
       failure: (err) => {
