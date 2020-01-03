@@ -2,8 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import styled from 'styled-components';
 import Recommendation from './Recommendation.jsx';
-// let params = (new URL(document.location)).searchParams;
-// let restaurantId = parseInt(params.get('restaurantId'))
+
 const Allrecs = styled.div`
   display: flex;
   flex-direction: row;
