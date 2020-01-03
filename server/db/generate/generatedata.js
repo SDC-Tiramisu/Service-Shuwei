@@ -14,28 +14,28 @@ function writeOneMillionTimes(fileName, startNum){
    do{
      var genres = ['American', 'Asian', 'Mexican', 'Indian'];
      var prices = ['$', '$$', '$$$', '$$$$'];
-     var majorString = '';
+    //  var majorString = '';
 
      var genre = genres[Math.floor(Math.random() * Math.floor(genres.length))];
      var title1 = faker.company.companyName();
      maxSize--;
-     var i = maxSize+startNum+1;
+     var id = maxSize+startNum+1;
      var price = prices[Math.floor(Math.random() * prices.length)];
      var description = faker.lorem.sentence();
-     majorString+=i+';'+genre+';'+title1+';'+price+';'+description
+    //  majorString+=i+';'+genre+';'+title1+';'+price+';'+description
 
 
        var numRecommRestau = Math.floor(Math.random() * 5) + 1;
-       var string2 = '';
-       var recomRestrau = [];
+      //  var string2 = '';
+       var recommendRestaurant = [];
        for (var j = 0; j < numRecommRestau; j++) {
-         recomRestrau.push(Math.floor(Math.random() * 100) + 1);
+        recommendRestaurant.push(Math.floor(Math.random() * 100) + 1);
        }
-       string2 = recomRestrau.join(',');
+      //  string2 = recomRestrau.join(',');
 
 
        var numPhotos = Math.floor(Math.random() * (10 - 5 + 1) + 5);
-       var string3 = '';
+      //  var string3 = '';
        var photosArr = []
        for (var l = 0; l < numPhotos; l++) {
 
@@ -44,10 +44,12 @@ function writeOneMillionTimes(fileName, startNum){
          var picUrl = `http://sdc-5-images.s3-us-west-1.amazonaws.com/scapeImages/${photoNum}.jpg`;
          photosArr.push(picUrl)
        }
-       string3 = photosArr.join(',');
-       string2+=';'+string3;
-       majorString += ';'+string2;
-       majorString += '\n'
+
+      var majorString = `${id};${genre};${title1};${price};${description};[${recommendRestaurant}];[${photosArr}]\n`
+      //  string3 = photosArr.join(',');
+      //  string2+=';'+string3;
+      //  majorString += ';'+string2;
+      //  majorString += '\n'
        if(maxSize===0){
          Writer.write(majorString)
        }else{
@@ -69,7 +71,7 @@ console.log("lets start!!!")
 writeOneMillionTimes('./server/db/generate/csv/file1.csv', 0);
 writeOneMillionTimes('./server/db/generate/csv/file2.csv', 1000000);
 writeOneMillionTimes('./server/db/generate/csv/file3.csv', 2000000);
-writeOneMillionTimes('./server/db/generate/csv/file3.csv', 3000000);
+writeOneMillionTimes('./server/db/generate/csv/file4.csv', 3000000);
 writeOneMillionTimes('./server/db/generate/csv/file5.csv', 4000000);
 writeOneMillionTimes('./server/db/generate/csv/file6.csv', 5000000);
 writeOneMillionTimes('./server/db/generate/csv/file7.csv', 6000000);
