@@ -48,7 +48,7 @@ class App extends React.Component {
         this.setState({
           genre:  data.genre,
           title:  data.title,
-          recs:  data.recs
+          recs:  data.expected
 
         });
       },
