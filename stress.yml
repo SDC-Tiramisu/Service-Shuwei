@@ -12,16 +12,16 @@ scenarios:
       - get:
           url: '/api/restaurants/{{ id }}'
 
-  - name: "POST test"
-    flow:
-      - function: generateData
-      - post:
-          url: "/api/restaurants"
-          json:
-            id: "{{ id }}"
-            title: "{{ title }}"
-            genre: "{{ genre }}"
-            price: "{{ price }}"
-            description: "{{ description }}"
-            recommendRestaurant: "{{ recommendRestaurant }}"
-            images: "{{ images }}"
+  # - name: "POST test"
+  #   flow:
+  #     - function: generateData
+  #     - post:
+  #         url: "/api/restaurants"
+  #         json:
+  #           id: "{{ id }}"
+  #           title: "{{ title }}"
+  #           genre: "{{ genre }}"
+  #           price: "{{ price }}"
+  #           description: "{{ description }}"
+  #           recommendRestaurant: "{{ recommendRestaurant }}"
+  #           images: "{{ images }}"
