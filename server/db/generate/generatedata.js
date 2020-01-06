@@ -29,20 +29,20 @@ function writeOneMillionTimes(fileName, startNum){
       //  var string2 = '';
        var recommendRestaurant = [];
        for (var j = 0; j < numRecommRestau; j++) {
-        recommendRestaurant.push(Math.floor(Math.random() * 100) + 1);
+        recommendRestaurant.push(Math.floor(Math.random() * 100000) + 1);
        }
       //  string2 = recomRestrau.join(',');
 
 
-       var numPhotos = Math.floor(Math.random() * (10 - 5 + 1) + 5);
+      //  var numPhotos = Math.floor(Math.random() * (10 - 5 + 1) + 5);
       //  var string3 = '';
        var photosArr = []
-       for (var l = 0; l < numPhotos; l++) {
+       for (var l = 0; l < 5; l++) {
 
          var photoNum = Math.floor(Math.random() *1000) + 1;
 
-         var picUrl = `http://sdc-5-images.s3-us-west-1.amazonaws.com/scapeImages/${photoNum}.jpg`;
-         photosArr.push(picUrl)
+        //  var picUrl = `http://sdc-5-images.s3-us-west-1.amazonaws.com/scapeImages/${photoNum}.jpg`;
+         photosArr.push(photoNum)
        }
 
       var majorString = `${id};${genre};${title1};${price};${description};[${recommendRestaurant}];[${photosArr}]\n`
