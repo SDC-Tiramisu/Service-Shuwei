@@ -1,4 +1,4 @@
 npm
 node_modules/
 *.csv
-./stressGenerate.js
+stressGenerate.js
