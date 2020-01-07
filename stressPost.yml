@@ -1,0 +1,21 @@
+config:
+  target: 'http://localhost:3005'
+  processor: './stressPostGenerate.js'
+  phases:
+    - duration: 60
+      arrivalRate: 20
+scenarios:
+  - flow:
+      - loop:
+          - function: 'generateData'
+          - post:
+                url: '/api/restaurants'
+                json:
+                  id: "{{ id }}"
+                  title: "{{ title }}"
+                  genre: "{{ genre }}"
+                  price: "{{ price }}"
+                  description: "{{ description }}"
+                  recommendRestaurant: "{{ recommendRestaurant }}"
+                  images: "{{ images }}"
+        count: 50

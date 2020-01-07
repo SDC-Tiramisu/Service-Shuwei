@@ -14,65 +14,30 @@ app.use(bodyParser.json());
 
 app.use(express.static('client'));
 
-// app.get('/api/restaurants/:restaurantId', (req, res) => {
-//  var id = req.params.restaurantId;
-//  var q = `SELECT genre, title, recommendrestaurant FROM recommendres where id = ${id}`
-//   client.execute(q, { prepare: true })
-//     .then((data) => {
-//     const idArr = data.rows[0].recommendrestaurant;
-//     console.log("this is idArr, ",idArr)
-//     const genre = data.rows[0].genre;
-//     const title = data.rows[0].title;
-//     let expected = [];
-//     for(var i = 0; i < idArr.length; i++){
-//       client.execute(`SELECT title,description, price,images FROM recommendres WHERE id = (${idArr[i]});`)
-//       .then((data) => {
-//         console.log("this is data: ",data)
-//         for(var i = 0; i < data.rows[0].images.length;i++){
-//           var numImage = data.rows[0].images[i];
-
-//           data.rows[0].images[i] = `http://sdc-5-images.s3-us-west-1.amazonaws.com/scapeImages/${numImage}.jpg`
-//           expected.push(data.rows[0])
-//         }
-//       })
-//       .catch(err => console.log("inside get errors: ",err));
-//     }
-//     // res.send({expected})
-
-//   })
-
-//    .catch(err => console.log("get errors: ",err));
-// });
 
 app.get('/api/restaurants/:restaurantId', (req, res) => {
   var id = req.params.restaurantId;
-  var q = `SELECT id, genre, title, recommendrestaurant FROM recommendres where id = ${id}`
+  var q = `SELECT genre, title, recommendrestaurant FROM recommendres where id = ${id}`
   client.execute(q)
-    .then(data => {
-      return data.rows[0];
+    .then((data)=> {
+      var idArr = data.rows[0].recommendrestaurant;
+      var genre = data.rows[0].genre;
+      var title = data.rows[0].title;
+      var q2 = `SELECT title,description, price,images FROM recommendres WHERE id IN (${idArr});`
+      client.execute(q2)
+        .then((data)=>{
+          console.log("second data:",data.rows)
+          var recArr = data.rows
+          res.send({recArr, genre, title})
+        })
+        .catch(err => console.log("inside query errors: ",err));
     })
-    .then(async (data) => {
-      let expected = [];
-      let recs = data['recommendrestaurant'];
-      for (let i = 0; i < recs.length; i++) {
-        results = await client.execute(`SELECT title,description, price,images FROM recommendres WHERE id =${recs[i]};`);
-        console.log(results.rows[0].images);
-        for (let x=0; x<results.rows[0].images.length; x++){
-          let numImage= results.rows[0].images[x];
-          results.rows[0].images[x]= `http://sdc-5-images.s3-us-west-1.amazonaws.com/scapeImages/${numImage}.jpg`;
-        }
-        expected.push(results.rows[0]);
-      }
-      data.recs = expected;
-      return data;
-    })
-    .then(data => res.send(data))
-    .catch(err => console.log("get errors: ",err));
- });
+    .catch(err => console.log("get errors: ", err));
+  })
 
 app.post('/api/restaurants', (req, res) => {
  var data=req.body;
- const q = `INSERT INTO recommendres (id, genre, title, price,description, recommendrestaurant, images) VALUES(${req.body.id},${req.body.genre},${req.body.title},${req.body.price},${req.body.description},${req.body.recommendrestaurant},${req.body.images})`;
+ const q = `INSERT INTO recommendres (id, genre, title, price,description, recommendrestaurant, images) VALUES(?,?,?,?,?,?,?)`;
  console.log("data====",data)
  client.execute(q, data, {prepare: true})
 

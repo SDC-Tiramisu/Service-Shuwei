@@ -108,7 +108,7 @@ class Recommendation extends React.Component {
 
   constructor(props) {
     super(props);
-    // console.log("recom props:",this.props)
+    console.log("recom props:",this.props)
     this.state = {
       imageIndex: 0
     };
@@ -119,7 +119,7 @@ class Recommendation extends React.Component {
 
   onLeftClick() {
     const lastIndex = this.props.rec.images.length - 1;
-    // console.log("this is lastIndex: ",lastIndex);
+    console.log("this is lastIndex: ",lastIndex);
     // console.log("this is recL : ",this.props.rec)
     const { imageIndex } = this.state;
     const shouldResetIndex = imageIndex === 0;
@@ -147,7 +147,7 @@ class Recommendation extends React.Component {
         <Picholder>
           <Picnavleft onClick={this.onLeftClick}></Picnavleft>
           <Pic>
-          <ImageSlide url={ this.props.rec.images[this.state.imageIndex] }/>
+          <ImageSlide url={ `http://sdc-5-images.s3-us-west-1.amazonaws.com/scapeImages/${this.props.rec.images[this.state.imageIndex]}.jpg`}/>
           </Pic>
           <Picnavright onClick={this.onRightClick}></Picnavright>
         </Picholder>
