@@ -62,5 +62,5 @@ app.delete('/api/restaurants/:restaurantId', (req, res) => {
  .catch(err => console.log("delete errors: ",err));
 })
 
-const port = 3005;
+const port = process.env.PORT || 3005;
 app.listen(port, () => console.log(`listening on port ${port}`));
