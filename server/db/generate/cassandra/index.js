@@ -1,5 +1,5 @@
 const cassandra = require('cassandra-driver');
-const contactpoint = '172.31.13.193:9042';
+const contactpoint = '172.31.13.193:9042' || '127.0.0.1';
 const client = new cassandra.Client({
   contactPoints: [contactpoint],
   localDataCenter: 'datacenter1',
